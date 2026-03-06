@@ -1,9 +1,13 @@
 using Npgsql;
+using Repository.Implementations;
+using Repository.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IAdminInterface, AdminRepository>();
 
 builder.Services.AddScoped<NpgsqlConnection>(conn =>
 {
